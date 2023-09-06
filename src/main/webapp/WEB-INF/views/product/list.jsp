@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<a href="product/add">dcdkjb</a>
 	<table>
 		<thead>
 			<tr>
@@ -21,6 +22,8 @@
 				<tr>
 					<td>${product.name}</td>
 					<td>${product.price}</td>
+					<td><a href="view?id=${product.getCode()}">edit</a></td>
+					<td><a href="view?id=${product.getCode()}">delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
