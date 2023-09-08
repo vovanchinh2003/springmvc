@@ -19,6 +19,11 @@ public class ProductRepositoryImpl implements ProductRepository {
 		products.put(4, new Product(4, "Iphone4", 104));
 		products.put(5, new Product(5, "Iphone5", 105));
 		products.put(6, new Product(6, "Iphone6", 106));
+		products.put(7, new Product(7, "Iphone7", 107));
+		products.put(8, new Product(8, "Iphone8", 108));
+		products.put(9, new Product(9, "Iphone9", 109));
+		products.put(10, new Product(10, "Iphone10", 100));
+
 	}
 
 	@Override
@@ -28,9 +33,9 @@ public class ProductRepositoryImpl implements ProductRepository {
 	}
 
 	@Override
-	public Product finByid(int id) {
+	public Product finByid(int code) {
 		// TODO Auto-generated method stub
-		Product product = products.get(id);
+		Product product = products.get(code);
 		return product;
 	}
 
@@ -41,8 +46,8 @@ public class ProductRepositoryImpl implements ProductRepository {
 	}
 
 	@Override
-	public void delete(int id) {
-		products.remove(id);
+	public void delete(int code) {
+		products.remove(code);
 	}
 
 	@Override

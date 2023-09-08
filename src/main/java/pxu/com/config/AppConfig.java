@@ -25,18 +25,19 @@ public class AppConfig implements WebMvcConfigurer {
 		resolver.setViewClass(JstlView.class);
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
-		return resolver; 
+		return resolver;
 	}
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
+
 	@Bean
 	public ProductService productService() {
-		return new 	ProductSeviceImpl();
+		return new ProductSeviceImpl();
 	}
-	
+
 	@Bean
 	public ProductRepository productRepository() {
 		return new ProductRepositoryImpl();

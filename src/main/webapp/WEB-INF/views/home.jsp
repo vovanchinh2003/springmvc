@@ -13,7 +13,7 @@
 
 	<h1>Sign up Account</h1>
 
-	<form:form action="new" method="post" modelAttribute="product">
+	<form:form action="save" method="post" modelAttribute="product">
 		<table>
 			<tr>
 				<td><form:label path="name">Tên sản phẩm: </form:label></td>

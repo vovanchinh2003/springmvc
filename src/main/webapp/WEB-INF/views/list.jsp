@@ -13,6 +13,7 @@
 	<table>
 		<thead>
 			<tr>
+				<th>ID</th>
 				<th>Name</th>
 				<th>Price</th>
 			</tr>
@@ -20,6 +21,7 @@
 		<tbody>
 			<c:forEach items="${products}" var="product">
 				<tr>
+					<td>${product.code}</td>
 					<td>${product.name}</td>
 					<td>${product.price}</td>
 					<td><a href="view?code=${product.code}">view</a></td>

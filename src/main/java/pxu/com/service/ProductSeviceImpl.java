@@ -19,9 +19,9 @@ public class ProductSeviceImpl implements ProductService {
 	}
 
 	@Override
-	public Product finByid(int id) {
+	public Product finByid(int code) {
 		// TODO Auto-generated method stub
-		return this.productRepository.finByid(id);
+		return this.productRepository.finByid(code);
 	}
 
 	@Override
