@@ -20,22 +20,22 @@ public class ProductController {
 	@Autowired
 	public ProductService productService;
 
-	@RequestMapping(value = "product/add", method = RequestMethod.GET)
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String processAddProductForm(@ModelAttribute("product") Product product) {
-		return "product/home";
+		return "/home";
 	}
 
 	@GetMapping("/products")
 	public ModelAndView list() {
 		List<Product> products = this.productService.fimAll();
-		ModelAndView modelAndView = new ModelAndView("product/list");
+		ModelAndView modelAndView = new ModelAndView("/list");
 		modelAndView.addObject("products", products);
 		return modelAndView;
 	}
 
 	@GetMapping("/new")
 	public ModelAndView showCreateform() {
-		ModelAndView modelAndView = new ModelAndView("product/create");
+		ModelAndView modelAndView = new ModelAndView("/list");
 		modelAndView.addObject("product", new Product());
 		return modelAndView;
 	}
@@ -46,19 +46,55 @@ public class ProductController {
 		product.setCode(romdomid);
 		this.productService.save(product);
 
-		ModelAndView modelAndView = new ModelAndView("product/create");
+		ModelAndView modelAndView = new ModelAndView("/list");
 		modelAndView.addObject("product", new Product());
 		modelAndView.addObject("mess", "new product wwas created");
 
 		return modelAndView;
 	}
 
-	@GetMapping(value = "/view")
-	public ModelAndView view(@RequestParam("id") Integer productid) {
+	@GetMapping(value = "/update")
+	public ModelAndView update(@RequestParam("code") Integer productid) {
 		Product product = this.productService.finByid(productid);
-		ModelAndView modelAndView = new ModelAndView("product/view");
+		ModelAndView modelAndView = new ModelAndView("/update");
 		modelAndView.addObject("product", product);
 		return modelAndView;
 
+	}
+	@GetMapping(value = "/view")
+	public ModelAndView view(@RequestParam("code") Integer productid) {
+		Product product = this.productService.finByid(productid);
+		ModelAndView modelAndView = new ModelAndView("/details");
+		modelAndView.addObject("product", product);
+		return modelAndView;
+
+	}
+
+	@GetMapping("/edit")
+	public ModelAndView showEditForm(@RequestParam("code") Integer productId) {
+		Product product = this.productService.finByid(productId);
+		ModelAndView modelAndView = new ModelAndView("/edit");
+		modelAndView.addObject("product", product);
+		return modelAndView;
+	}
+
+	@PostMapping("/edit")
+	public ModelAndView updateProduct(@ModelAttribute("product") Product product) {
+		this.productService.update(product);
+
+		ModelAndView modelAndView = new ModelAndView("/list");
+		modelAndView.addObject("mess", "Product updated successfully");
+
+		return modelAndView;
+	}
+
+	@GetMapping("/delete")
+	public ModelAndView deleteProduct(@RequestParam("code") Integer productId) {
+		this.productService.delete(productId);
+
+		ModelAndView modelAndView = new ModelAndView("/list");
+		modelAndView.addObject("mess", "Product deleted successfully");
+
+		return modelAndView;
 	}
 }

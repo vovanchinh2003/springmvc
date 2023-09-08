@@ -12,4 +12,7 @@ public interface ProductRepository {
 	Product finByid(int id);
 
 	void save(Product product);
+	void update(Product product); 
+
+	void delete(int code);
 }

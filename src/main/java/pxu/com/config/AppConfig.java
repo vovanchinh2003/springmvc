@@ -25,7 +25,7 @@ public class AppConfig implements WebMvcConfigurer {
 		resolver.setViewClass(JstlView.class);
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
-		return resolver;
+		return resolver; 
 	}
 
 	@Override

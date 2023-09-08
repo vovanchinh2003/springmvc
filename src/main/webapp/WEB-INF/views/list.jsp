@@ -9,11 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="product/add">dcdkjb</a>
+	<a href="add">dcdkjb</a>
 	<table>
 		<thead>
 			<tr>
-				<th>Product Name</th>
+				<th>Name</th>
 				<th>Price</th>
 			</tr>
 		</thead>
@@ -22,8 +22,9 @@
 				<tr>
 					<td>${product.name}</td>
 					<td>${product.price}</td>
-					<td><a href="view?id=${product.getCode()}">edit</a></td>
-					<td><a href="view?id=${product.getCode()}">delete</a></td>
+					<td><a href="view?code=${product.code}">view</a></td>
+					<td><a href="update?code=${product.code}">edit</a></td>
+					<td><a href="delete?code=${product.code}">delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
