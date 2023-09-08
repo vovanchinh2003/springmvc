@@ -41,16 +41,11 @@ public class ProductController {
 	}
 
 	@PostMapping("/new")
-	public ModelAndView createProduct(@ModelAttribute("product") Product product) {
+	public String createProduct(@ModelAttribute("product") Product product) {
 		int romdomid = (int) (Math.random() * 1000);
 		product.setCode(romdomid);
 		this.productService.save(product);
-
-		ModelAndView modelAndView = new ModelAndView("/list");
-		modelAndView.addObject("product", new Product());
-		modelAndView.addObject("mess", "new product wwas created");
-
-		return modelAndView;
+		return "redirect:/products";
 	}
 
 	@GetMapping(value = "/update")
@@ -61,6 +56,7 @@ public class ProductController {
 		return modelAndView;
 
 	}
+
 	@GetMapping(value = "/view")
 	public ModelAndView view(@RequestParam("code") Integer productid) {
 		Product product = this.productService.finByid(productid);
@@ -79,22 +75,14 @@ public class ProductController {
 	}
 
 	@PostMapping("/edit")
-	public ModelAndView updateProduct(@ModelAttribute("product") Product product) {
+	public String updateProduct(@ModelAttribute("product") Product product) {
 		this.productService.update(product);
-
-		ModelAndView modelAndView = new ModelAndView("/list");
-		modelAndView.addObject("mess", "Product updated successfully");
-
-		return modelAndView;
+		return "redirect:/products";
 	}
 
 	@GetMapping("/delete")
-	public ModelAndView deleteProduct(@RequestParam("code") Integer productId) {
+	public String deleteProduct(@RequestParam("code") Integer productId) {
 		this.productService.delete(productId);
-
-		ModelAndView modelAndView = new ModelAndView("/list");
-		modelAndView.addObject("mess", "Product deleted successfully");
-
-		return modelAndView;
+		return "redirect:/products";
 	}
 }
