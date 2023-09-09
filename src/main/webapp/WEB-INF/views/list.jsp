@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="add">dcdkjb</a>
+	<a href="add">add</a>
 	<table>
 		<thead>
 			<tr>
