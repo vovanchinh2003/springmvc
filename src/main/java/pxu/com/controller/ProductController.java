@@ -33,7 +33,7 @@ public class ProductController {
 	}
 
 	@PostMapping("/save")
-	public String createProduct(@ModelAttribute("product") Product product) {
+	public String saveProduct(@ModelAttribute("product") Product product) {
 		int romdomid = (int) (Math.random() * 1000);
 		product.setCode(romdomid);
 		this.productService.save(product);

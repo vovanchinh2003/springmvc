@@ -12,8 +12,7 @@
 <body>
 
 
-	<form:form action="edit" method="post"
-		modelAttribute="product">
+	<form:form action="edit" method="post" modelAttribute="product">
 		<table>
 			<tr>
 				<td><form:label path="code">Id: </form:label></td>
@@ -28,6 +27,11 @@
 			<tr>
 				<td><form:label path="price">Giá: </form:label></td>
 				<td><form:input path="price" /> <form:errors path="price"
+						cssStyle="color:red" /></td>
+			</tr>
+			<tr>
+				<td><form:label path="image">Image: </form:label></td>
+				<td><form:input path="image" /><img alt="" src="image"> <form:errors path="image"
 						cssStyle="color:red" /></td>
 			</tr>
 			<tr>
